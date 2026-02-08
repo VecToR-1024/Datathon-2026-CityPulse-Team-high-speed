@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityPulse - Technical Details</title>
+    <script type="text/javascript" charset="UTF-8"></script><style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #000000;
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .hero {
+            margin-bottom: 80px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-size: 42px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        h3 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        h4 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #cccccc;
+            margin-bottom: 20px;
+        }
+
+        .content-box {
+            background-color: #111;
+            border: 1px solid #333;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .content-box h3 {
+            margin-top: 0;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            color: #cccccc;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .formula {
+            background-color: #0a0a0a;
+            border: 1px solid #333;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: #111;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background-color: #1a1a1a;
+            border-left: 4px solid #ffffff;
+            padding: 20px 25px;
+            margin: 30px 0;
+        }
+
+        footer {
+            background-color: #000000;
+            border-top: 1px solid #333;
+            padding: 60px 0;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .footer-section a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="citypulse_logo_clean.svg" alt="CityPulse Logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="technical.html">Technical Details</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>Technical Documentation</h1>
+                <p>Detailed methodology, mathematical models, and analytical approaches used in the CityPulse project.</p>
+            </section>
+
+            <section id="assumptions">
+                <h2>Assumptions & Data Preparation</h2>
+
+                <div class="content-box">
+                    <h3>Key Assumptions</h3>
+                    <ul>
+                        <li>The population distribution within a neighborhood is uniform.</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3>Data Cleaning Process</h3>
+                    <p>We cleaned the dataset by removing all rows with missing values for "properties/severity". All analyses are based on this cleaned dataset. This approach is appropriate as only approximately 2,000 values out of over 80,000 total data points were affected.</p>
+                    <ul>
+                        <li><strong>Total data points:</strong> 81,973</li>
+                        <li><strong>Valid data points after cleaning:</strong> 79,722</li>
+                        <li><strong>Removal rate:</strong> ~2.7%</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="objectives">
+                <h2>Project Objectives</h2>
+                <p>Given a coordinate in Seattle, calculate the following accessibility metrics:</p>
+
+                <div class="content-box">
+                    <h3>1. Government Priority Index (GPI)</h3>
+                    <p>A comprehensive metric to guide government repair prioritization based on multiple factors.</p>
+
+                    <h4>Considered Factors (Determined by Entropy Weight Method)</h4>
+                    <ul>
+                        <li><strong>Population Density:</strong> Positive impact—higher population leads to higher priority</li>
+                        <li><strong>Severity Score:</strong> Higher severity corresponds to higher urgency</li>
+                        <li><strong>Barrier Type Impact Score:</strong> Each barrier type receives a score based on real-world impact estimation</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h4>Impact Scores by Barrier Type</h4>
+                        <table>
+                            <tr>
+                                <th>Barrier Type</th>
+                                <th>Impact Score</th>
+                            </tr>
+                            <tr>
+                                <td>CurbRamp</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>NoCurbRamp</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>NoSidewalk</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>Obstacle</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>Occlusion</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>Other</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>SurfaceProblem</td>
+                                <td>4</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h3>2. Individual Accessibility Index (IAI)</h3>
+                    <p>A personalized metric to guide citizens and travelers, especially those with accessibility needs, in route selection.</p>
+
+                    <h4>Considered Factors</h4>
+                    <ul>
+                        <li><strong>Specialized Severity:</strong> Different severity weights for different user groups (determined by AHP)</li>
+                        <li><strong>Base Severity Score:</strong> Derived from the GPI model</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="models">
+                <h2>Mathematical Models</h2>
+
+                <div class="content-box">
+                    <h3>Government Priority Index (GPI) Model</h3>
+
+                    <h4>Objective</h4>
+                    <p>To inform the government which accessibility barriers should be addressed first. Our model considers three primary factors:</p>
+                    <ol>
+                        <li><strong>Severity:</strong> More severe problems receive higher priority</li>
+                        <li><strong>Population Density:</strong> Areas with higher population impact more people</li>
+                        <li><strong>Barrier Type Impact:</strong> Different barrier types affect different population segments</li>
+                    </ol>
+
+                    <h4>Methodology</h4>
+                    <p><strong>Step 1: Data Standardization</strong></p>
+                    <p>All data is standardized using min-max normalization to a 0-1 scale.</p>
+
+                    <p><strong>Step 2: Weight Determination (Entropy Weight Method)</strong></p>
+                    <p>We chose the entropy weight method because we have a large dataset with significant variance across different issue locations. This makes entropy weighting an objective approach to determine factor weights.</p>
+
+                    <div class="highlight-box">
+                        <h4>Calculated Weights</h4>
+                        <ul>
+                            <li>Severity: <strong>46.355%</strong></li>
+                            <li>Population Density: <strong>33.052%</strong></li>
+                            <li>Impact Score: <strong>20.593%</strong></li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Step 3: Score Calculation (TOPSIS Algorithm)</strong></p>
+                    <p>After obtaining weights, we calculate the score for each location and rank priorities using the TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution) algorithm. We chose TOPSIS because there is no strong correlation between the three factors, and TOPSIS performs optimally in this scenario.</p>
+
+                    <div class="formula">
+GPI Score Calculation:
+
+1. Normalize decision matrix
+2. Calculate weighted normalized decision matrix
+3. Determine ideal best and ideal worst solutions
+4. Calculate Euclidean distances to ideal solutions
+5. Calculate relative closeness to ideal solution
+
+Final GPI Score = C_i = D_i⁻ / (D_i⁺ + D_i⁻)
+
+Where:
+- C_i = Closeness coefficient for location i
+- D_i⁺ = Distance to ideal best solution
+- D_i⁻ = Distance to ideal worst solution
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h3>Individual Accessibility Index (IAI) Model</h3>
+
+                    <h4>Objective</h4>
+                    <p>To assess accessibility for different user groups at various problematic locations. Unlike GPI, which requires objective evaluation for all users, IAI is more subjective because different barriers have dramatically different impacts on different users.</p>
+
+                    <p><strong>Example:</strong> A missing curb ramp is extremely challenging for wheelchair users but easily navigable for pedestrians. Therefore, the NoCurbRamp score for wheelchair users is 6, while for pedestrians it is 2.</p>
+
+                    <h4>Methodology</h4>
+                    <p><strong>Weight Determination (Analytic Hierarchy Process - AHP)</strong></p>
+                    <p>We use AHP to assign importance weights because IAI requires subjective evaluation based on how different barriers affect different user groups. Our consideration is that impact score should have the highest weight, followed by severity, and lastly population.</p>
+
+                    <div class="highlight-box">
+                        <h4>Calculated Weights (via AHP)</h4>
+                        <ul>
+                            <li>Impact Score: <strong>55.904%</strong></li>
+                            <li>Severity: <strong>25.991%</strong></li>
+                            <li>Population: <strong>18.105%</strong></li>
+                        </ul>
+
+                        <p><strong>Consistency Check:</strong> Consistency Ratio (CR) = 0.005 &lt; 0.01 ✓</p>
+                        <p>This confirms our assigned importance weights are internally consistent.</p>
+                    </div>
+
+                    <h4>User Group Specific Impact Scores</h4>
+                    <table>
+                        <tr>
+                            <th>Barrier Type</th>
+                            <th>Wheelchair</th>
+                            <th>Cane</th>
+                            <th>Pedestrian</th>
+                        </tr>
+                        <tr>
+                            <td>NoCurbRamp</td>
+                            <td>6</td>
+                            <td>5</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>NoSidewalk</td>
+                            <td>6</td>
+                            <td>6</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Obstacle</td>
+                            <td>5</td>
+                            <td>4</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>SurfaceProblem</td>
+                            <td>5</td>
+                            <td>5</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Occlusion</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>2</td>
+                        </tr>
+                    </table>
+
+                    <p>After obtaining the weights, we calculate score using simple additive weighting(SAW) to calculated the IAI score for each location, then do the standardization making the highest score to 1 and lowest score to 0. <strong>Higher scores indicate more dangerous conditions for the specific user group.</strong></p>
+                </div>
+            </section>
+
+            <section id="prediction-model">
+                <h2>Distance-Weighted Radius Neighbor Regression Model</h2>
+
+                <div class="content-box">
+                    <h3>Model Overview</h3>
+                    <p>Our spatial prediction model is inspired by K-Nearest Neighbors (KNN) but uses a distance-based radius approach instead of a fixed number of neighbors. This model can estimate GPI and IAI scores for any given coordinate in Seattle.</p>
+
+                    <h4>Why Not Traditional KNN?</h4>
+                    <p>Traditional KNN uses a fixed number of neighbors (K), which can be problematic in urban settings:</p>
+                    <ul>
+                        <li>In sparse areas, it might include data points that are too far away to be relevant</li>
+                        <li>In dense areas, it might miss nearby relevant data points</li>
+                        <li>Geographic distance matters more than arbitrary neighbor counts in accessibility analysis</li>
+                    </ul>
+
+                    <h3>Our Approach: Radius-Based Spatial Regression</h3>
+                    <h4>Algorithm</h4>
+                    <ol>
+                        <li><strong>Define Search Radius:</strong> 0.8 miles (approximately 1.3 km)</li>
+                        <li><strong>Find All Neighbors:</strong> Identify all data points within the radius using Haversine distance (accounting for Earth's curvature)</li>
+                        <li><strong>Apply Distance Weighting:</strong> Weight each neighbor's score inversely proportional to its distance</li>
+                        <li><strong>Calculate Weighted Average:</strong> Compute the final score as a distance-weighted average</li>
+                    </ol>
+
+                    <div class="formula">
+Model Implementation:
+
+model = RadiusNeighborsRegressor(
+    radius=radius_radians,
+    weights='distance',
+    metric='haversine',
+    algorithm='ball_tree'
+)
+
+Parameters:
+- radius: 0.8 miles converted to radians (1.29 km / 6371 km Earth radius)
+- weights='distance': Inverse distance weighting (weight = 1/distance)
+- metric='haversine': Spherical distance calculation
+- algorithm='ball_tree': Efficient spatial indexing for fast queries
+
+Prediction for location (lat, lon):
+1. Find all points within 0.8 miles
+2. Calculate distances using Haversine formula
+3. Compute weights: w_i = 1 / distance_i
+4. Return weighted average: Score = Σ(w_i × score_i) / Σ(w_i)
+                    </div>
+
+                    <h4>Key Parameters Explained</h4>
+                    <ul>
+                        <li><strong>radius=0.8 miles:</strong> Defines the "local neighborhood." Only considers data within this distance.</li>
+                        <li><strong>weights='distance':</strong> Closer points have more influence (inverse distance weighting).</li>
+                        <li><strong>metric='haversine':</strong> Correctly measures distance on Earth's curved surface using latitude/longitude.</li>
+                        <li><strong>algorithm='ball_tree':</strong> Efficient data structure for finding neighbors quickly in metric spaces.</li>
+                    </ul>
+
+                    <h4>Advantages</h4>
+                    <ul>
+                        <li>Respects geographic locality—only uses truly nearby data</li>
+                        <li>Handles varying data density across neighborhoods</li>
+                        <li>Provides smooth interpolation for areas between data points</li>
+                        <li>Returns no prediction (transparent) for areas with no nearby data</li>
+                        <li>Computationally efficient with Ball Tree indexing</li>
+                    </ul>
+                </div>
+            </section>
+
+
+            <div class="content-box">
+                <h3>Grid Heatmap Validation: Examining Model Fidelity</h3>
+                
+                <h4>Methodology</h4>
+                <p>To test our model's spatial understanding, we generated a grid covering the entire Seattle area. For the center of every single grid square, we queried our <strong>Distance-Weighted Radius Neighbor</strong> model to predict a friction score.</p>
+                
+                <h4>Motivation & Insights</h4>
+                <p>We created this grid visualization to answer a critical question: <em>Does the model truly understand the city's geography, or is it just memorizing points?</em></p>
+                
+                <ul>
+                    <li><strong>Visual Verification:</strong> By comparing the generated grid against the raw data heatmap, we confirmed that the model correctly reproduces "hot zones" (high-friction areas like Pike Market and First Hill) without distorting the spatial boundaries.</li>                    
+                    <li><strong>The Blind Spot Discovery:</strong> This comparison revealed that while our model is highly accurate in dense urban cores. However, the model slightly deviates from the real-world situation when fewer samples are presented around. </li>
+                </ul>
+            </div>
+
+            <section id="analysis-process">
+                <h2>Data Analysis Process</h2>
+
+                <div class="content-box">
+                    <h3>1. Exploratory Data Analysis (Raw Data)</h3>
+                    <ul>
+                        <li>Identify neighborhoods with the highest number of accessibility barriers</li>
+                        <li>Locate areas with the most severe sidewalk accessibility problems (severity = 5)</li>
+                        <li>Analyze distribution of different accessibility problem severity levels</li>
+                        <li>Generate heatmaps using "properties/severity" as weights to visualize cumulative accessibility issues</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3>2. GPI Analysis</h3>
+                    <ul>
+                        <li>Generate heatmaps depicting GPI scores across Seattle</li>
+                        <li>Identify neighborhoods requiring highest priority intervention</li>
+                        <li>Compare GPI-based heatmaps with raw severity-based heatmaps</li>
+                        <li>Validate model predictions against original data distribution</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3>3. IAI Analysis</h3>
+                    <ul>
+                        <li>Generate separate heatmaps for wheelchair users, cane users, and pedestrians</li>
+                        <li>Identify high-risk areas for each user group</li>
+                        <li>Create predictive models for accessibility estimation</li>
+                        <li>Compare predicted vs. actual accessibility patterns</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="neighborhood-map">
+                <h2>Creating the Heatmaps</h2>
+                <p><strong>Source for Seattle neighborhood outlines:</strong> <a href="https://data-seattlecitygis.opendata.arcgis.com/maps/neighborhood-map-atlas-neighborhoods" style="color: #ffffff;">Seattle CityGIS Open Data</a></p>
+                <p>The geographic area is divided into equal regions based on coordinates. The weight of each region is calculated as the sum of the weights of all points located within them.</p>
+                <p>To better understand the accessibility issues associated with each Seattle neighborhood visually, a contour of the neighborhoods was created using the online database and overlaid on top of the heatmaps.</p>
+
+                <div class="image-container">
+                    <img src="heatmaps/GPI.png" alt="Seattle Neighborhoods Map">
+                    <div class="image-caption">Seattle accessibility issues heatmap</div>
+                </div>
+                <div class="image-container">
+                    <img src="heatmaps/SeattleNbh.png" alt="Seattle Neighborhoods Map">
+                    <div class="image-caption">Seattle neighborhoods Overlay</div>
+                </div>
+            </section>
+
+            <section id="technical-conclusions">
+                <h2>Model Validation & Conclusions</h2>
+
+                <div class="content-box">
+                    <h3>Model Performance</h3>
+                    <p>Our Distance-Weighted Radius Neighbor Regression model successfully captures spatial accessibility patterns:</p>
+                    <ul>
+                        <li>The estimated heatmaps closely match the original data distribution</li>
+                        <li>Hot spots (high-friction areas) are consistently identified in both original and predicted maps</li>
+                        <li>The model reveals data sparsity—showing areas where no data exists within the search radius</li>
+                        <li>Smooth interpolation provides actionable insights for unmeasured locations</li>
+                        <li>However, the model slightly deviates from the real-world situation when fewer samples are presented around</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3>Key Findings</h3>
+
+                    <h4>For Government Priority (GPI)</h4>
+                    <ol>
+                        <li><strong>Pike Market</strong> (Score: 0.521) — Highest priority for reconstruction</li>
+                        <li><strong>Yesler Terrace</strong> (Score: 0.520) — Second priority</li>
+                        <li><strong>Whittier Heights</strong> (Score: 0.513) — Third priority</li>
+                    </ol>
+
+                    <h4>For Wheelchair Users</h4>
+                    <ol>
+                        <li><strong>Pike Market</strong> (Score: 0.608) — Highest difficulty</li>
+                        <li><strong>Yesler Terrace</strong> (Score: 0.520)</li>
+                        <li><strong>First Hill</strong> (Score: 0.480)</li>
+                    </ol>
+
+                    <h4>For Cane Users</h4>
+                    <ol>
+                        <li><strong>Pike Market</strong> (Score: 0.600) — Highest difficulty</li>
+                        <li><strong>Yesler Terrace</strong> (Score: 0.516)</li>
+                        <li><strong>First Hill</strong> (Score: 0.477)</li>
+                    </ol>
+
+                    <h4>For Pedestrians</h4>
+                    <ol>
+                        <li><strong>Pike Market</strong> (Score: 0.515) — Highest difficulty</li>
+                        <li><strong>Ravenna</strong> (Score: 0.450)</li>
+                        <li><strong>Whittier Heights</strong> (Score: 0.445)</li>
+                    </ol>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>Model Insights</h3>
+                    <p><strong>Pike Market</strong> consistently ranks as the highest priority area across all metrics (GPI and all three IAI categories). This neighborhood requires immediate attention from city planners to improve accessibility for all user groups.</p>
+
+                    <p><strong>Data Sparsity:</strong> Our prediction model reveals that approximately 40% of Seattle's urban blocks lack accessibility data within a 0.8-mile radius. This highlights the need for more comprehensive data collection efforts in underrepresented neighborhoods.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Team Name</h4>
+                <p>You have such high-speed machinery entering UW, remember the principle I gave you. When I was young, I was a researcher, and the principle behind developing this thing is that it's controlled by an underworld regime.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contributors</h4>
+                <p>Dennis Tang, Keyue Ouyang (Ken), Chuhan Li, Barry Li</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Project Repository</h4>
+                <p><a href="https://github.com/VecToR-1024/Datathon-2026-CityPulse-Team-high-speed">View on GitHub</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

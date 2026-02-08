@@ -1,0 +1,42 @@
+<svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Top Clip Path (The Black Area) -->
+    <clipPath id="top-clip">
+      <path d="M 0,0 L 800,0 L 800,160 L 0,60 Z" />
+    </clipPath>
+  </defs>
+
+  <!-- 1. Bottom Layer (The Base) -->
+  <!-- Background: White -->
+  <rect x="0" y="0" width="800" height="200" fill="white" />
+
+  <!-- Text: Black -->
+  <text x="50%" y="70%" 
+        font-family="Inter, Helvetica, Arial, sans-serif" 
+        font-size="120" 
+        font-weight="900" 
+        letter-spacing="-5"
+        text-anchor="middle" 
+        fill="black">
+    CityPulse
+  </text>
+
+  <!-- 2. Top Layer (The Overlay) -->
+  <!-- Clipped to show only the top diagonal section -->
+  <g clip-path="url(#top-clip)">
+    <!-- Background: Black -->
+    <rect x="0" y="0" width="800" height="200" fill="black" />
+
+    <!-- Text: White -->
+    <text x="50%" y="70%" 
+          font-family="Inter, Helvetica, Arial, sans-serif" 
+          font-size="120" 
+          font-weight="900" 
+          letter-spacing="-5"
+          text-anchor="middle" 
+          fill="white">
+      CityPulse
+    </text>
+  </g>
+
+</svg>
